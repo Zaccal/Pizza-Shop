@@ -1,0 +1,28 @@
+$main: #FF7010;
+$mainHover: #ff8800;
+$red: #E23535;
+
+%flex-full {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+}
+
+%flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+%flex-align {
+    display: flex;
+    align-items: center;
+}
+
+// Fonts
+
+$fontOne: 'Inter';
+$fontTwo: 'Open Sans';
+
+@mixin fontAdd($name) {
+    font-family: $name, sans-serif;
+}

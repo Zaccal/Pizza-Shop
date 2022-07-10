@@ -1,0 +1,199 @@
+@media screen and (max-width: 1400px) {
+    /* types section start */
+
+    .foods {
+        overflow-x: scroll;
+        padding-top: 16px;
+        padding-bottom: 3px;
+        scrollbar-width: none;
+        & a + a {
+            margin-left: 12px;
+        }   
+    } 
+    
+
+    .foods__title {
+        font-size: 18px;
+    }
+
+    /* stocks */
+
+    .stocks {
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
+
+    /* types section end */
+}
+
+@media screen and (max-width: 1066px) {
+    /* Header top start */
+    .will-none {
+        display: none;
+    }
+   
+    .header__body {
+        position: relative;
+    }
+    .part-left a {
+        position: absolute;
+        right: 0;
+    }
+
+
+    .menu__item {
+        font-size: 11px;
+        & + & {
+            margin-left: 0;
+        }
+        span{
+            font-size: 13px;
+        }
+    }
+    .menu__place-list li{
+        font-size: 16px;
+    }
+    .menu__place-menu{
+        z-index: 2;
+    }
+    .menu__right {
+        width: 100%;
+    }
+    /* Header top end */
+
+    /* Header footer start */
+
+    nav.menu {
+        display: none;
+    }
+    .basket {
+        display: none !important;
+    }
+    .burger {
+        display: block;
+    }
+
+    /* Header footer end */
+}
+
+@media screen and (max-width: 720px) {
+    /* stocks start */
+
+    .stocks__item {
+        min-width: 280px;
+        height: 320px;
+        &:nth-child(2n) {
+            img {
+                margin-bottom: 60px;
+            }
+        }
+    }
+
+    /* stocks end */
+
+    /* check address start */
+
+    .address {
+        flex-direction: column !important;
+    }
+
+    .check-address__title{
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .btn-send {
+        display: block;
+    }
+
+    .form-control {
+        font-size: 14px;
+        line-height: 18px;
+        padding-left: 4px;
+        height: 44px;
+    }
+
+    .check-address__btn {
+        display: none;
+    }
+
+    /* check address end */
+}
+
+@media screen and (max-width: 632px) {
+    /* pizza section start */
+
+    .offcanvas-end {
+        transform: translateY(100%);
+    }
+
+    .offcanvas-filter {
+        width: 100%;
+        top: 61px;
+        border-radius: 16px 16px 0px 0px;
+    }
+
+    .use {
+        width: 100%;
+        margin-top: 50px;
+        &__btn:nth-child(2) {
+            margin-left: 30px;
+        }
+    }
+
+    /* pizza section end */
+}
+
+@media screen and (max-width: 642px) {
+    /* Pizza section start */
+
+    .card {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    /* Pizza section end */
+}
+
+@media screen and (max-width: 454px) {
+    
+    /* types section start */
+
+    .types { overflow-x: hidden; }
+
+    /* types section end */
+
+    /* window sing in start */
+
+
+    .accountWindow__container{
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .accountWindow__options {
+        flex-direction: column;
+        text-align: center;
+    }
+    .accountWindow__remember{
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    /* window sing in end */
+
+    /*pizza section start*/
+
+    .offcanvas-filter {
+        & p {
+            font-size: 11px;
+            line-height: 13px;
+        }
+    }
+    .offcanvas-filter__component{
+        overflow-x: scroll;
+    }
+
+    /*pizza section end*/
+}
