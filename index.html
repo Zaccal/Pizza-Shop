@@ -9,9 +9,7 @@
     <!-- font start -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- font end -->
     <!-- CSS styles start -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,21 +19,21 @@
     <title>Куда пицца</title>
 </head>
 
-<body>
+<body style="overflow: auto;">
     <!-- Modales start -->
 
     <!-- Sing in accaunt start -->
 
-    <div class="accountWindow modal fade" id="accountWindow" tabindex="-1" aria-labelledby="accountWindowLabel"
+    <div class="signIn modal fade" id="signIn" tabindex="-1" aria-labelledby="signInLabel"
         aria-hidden="true">
-        <div class="accountWindow__container d-flex modal-dialog">
-            <div class="accountWindow__content modal-content">
+        <div class="signIn__container d-flex modal-dialog">
+            <div class="signIn__content modal-content">
                 <div class="modal-header">
                     <p class="error">Простите пароль либо почта не верны</p>
                     <button type="button" class="acccountWindow__btn-close btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <div class="accountWindow__body modal-body">
+                <div class="signIn__body modal-body">
                     <form>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label text-muted">Электронная почта</label>
@@ -47,15 +45,15 @@
                             <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3 form-check">
-                            <div class="accountWindow__options d-flex justify-content-between">
-                                <div class="accountWindow__remember flex-wrap">
+                            <div class="signIn__options d-flex justify-content-between">
+                                <div class="signIn__remember flex-wrap">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Запомните меня</label>
                                 </div>
-                                <a href="#" class="accountWindow__link">Зарегистрироваться</a>
+                                <a href="#" class="signIn__link">Зарегистрироваться</a>
                             </div>
                         </div>
-                        <button type="button" class="accountWindow__btn btn" id="signIn">Войти</button>
+                        <button type="button" class="signIn__btn btn" id="signIn-Btn">Войти</button>
                     </form>
                 </div>
             </div>
@@ -63,6 +61,106 @@
     </div>
 
     <!-- Sing in accaunt end -->
+
+    <div class="error-filter alert alert-danger d-flex align-items-center justify-content-between" role="alert" id="error-filter">
+        <div class="error-filter__content d-flex align-items-center justify-content-between">
+            <img src="./img/warning.svg" alt="warning" class="warning">
+            <div>
+                Простите фильтр не работает
+            </div>
+        </div>
+        <button class="btn-close" id="error-close"></button>
+    </div>
+
+    <div class="product-modal modal" tabindex="-1" id="product-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="product-modal__header modal-header">
+                    <h5 class="product-modal__title">Пепперони по-деревенски</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeProduct"></button>
+                </div>
+                <div class="product-modal__body modal-body d-flex justify-content-between align-items-top" data-mark="New">
+                    <img src="./img/pizza-card.png" alt="product-img" class="product-modal__img" id="product-img">
+                    <div class="product-modal__content">
+
+                        <div class="preprave d-flex justify-content-between align-items-top">
+                            <div class="preprave__item">
+                                <div class="preprave__img border">
+                                    <img src="img/cheese.svg" alt="cheese-img">
+                                </div>
+                                <p class="preprave__name text-center">Моцарелла</p>
+                            </div>
+                            <div class="preprave__item">
+                                <div class="preprave__img border">
+                                    <img src="img/cucumber.svg" alt="cucumber-img">
+                                </div>
+                                <p class="preprave__name text-center">Огурцы маринованные</p>
+                            </div>
+                            <div class="preprave__item">
+                                <div class="preprave__img border">
+                                    <img src="img/Bake.svg" alt="bake-img">
+                                </div>
+                                <p class="preprave__name text-center">Пепперони</p>
+                            </div>
+                            <div class="preprave__item">
+                                <div class="preprave__img border">
+                                    <img src="img/souse.svg" alt="souse-img">
+                                </div>
+                                <p class="preprave__name text-center">Томатный соус</p>
+                            </div>
+                        </div>
+
+                        <div class="parameters d-flex justify-content-between align-items-center border mt-4">
+                            <div class="parameters__option active"><p class="text-center">Традиционное</p></div>
+                            <div class="parameters__option"><p class="text-center">Тонкое</p></div>
+                        </div>
+
+                        <div class="size parameters d-flex justify-content-between align-items-center border mt-4">
+                            <div class="size__option active"><p class="text-center">20 cм</p></div>
+                            <div class="size__option"><p class="text-center">28 см</p></div>
+                            <div class="size__option"><p class="text-center">33 см</p></div>
+                        </div>
+
+                        <p class="mt-4 fw-bold">Добавьте в пиццу</p>
+                        <div class="preprave-add preprave d-flex justify-content-between align-items-top mt-3">
+                            <div class="preprave-add__item">
+                                <div class="preprave-add__img preprave__img border">
+                                    <img src="img/cheese.svg" alt="cheese-img">
+                                </div>
+                                <p class="preprave-add__name preprave__name text-center">Моцарелла <span>59 ₽</span></p>
+                            </div>
+                            <div class="preprave-add__item">
+                                <div class="preprave-add__img preprave__img border">
+                                    <img src="img/shampionone.svg" alt="cucumber-img">
+                                </div>
+                                <p class="preprave-add__name preprave__name text-center">Шампиньоны <span>59 ₽</span></p>
+                            </div>
+                            <div class="preprave-add__item">
+                                <div class="preprave-add__img preprave__img border">
+                                    <img src="img/bow.svg" alt="bake-img">
+                                </div>
+                                <p class="preprave-add__name preprave__name text-center">Красный лук <span>59 ₽</span></p>
+                            </div>
+                            <div class="preprave-add__item">
+                                <div class="preprave-add__img  preprave__img border">
+                                    <img src="img/pepper.svg" alt="souse-img">
+                                </div>
+                                <p class="preprave-add__name preprave__name text-center">Сладкий перец <span style="display: block;">59 ₽</span></p>
+                            </div>
+                        </div>
+
+                        <div class="product-modal__footer modal-footer d-flex justify-content-between align-items-center mt-4">
+                            <div class="product-modal__price d-flex align-items-center">
+                                <h5 class="product-modal__itog text-orange text-orange">Итого: <span class="fs-5 text-orange">379</span> ₽</h5>
+                                <p class="weight text-muted ms-2"><span class="fs-6 text-muted">400</span> г</p>
+                            </div>
+                            <button type="button" class="product-modal__btn btn btn-lg">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modales end -->
 
@@ -74,7 +172,7 @@
         aria-labelledby="filterWindowLabel">
         <div class="offcanvas-header">
             <h5 id="filterWindowLabel">Фильтры</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" id="close-filter"></button>
         </div>
         <div class="offcanvas-filter__body offcanvas-body">
             <div class="offcanvas-filter__component">
@@ -138,6 +236,37 @@
                     <div class="general-col">
                         <div class="general__item border filter-btn">
                             <p>Мягкий молодой сыр</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted text-left mt-4">Мясо</p>
+                <div class="general mt-2">
+                    <div class="general-col">
+                        <div class="general__item border filter-btn">
+                            <p>Пепперони</p>
+                        </div>
+                        <div class="general__item border filter-btn">
+                            <p>Свинина</p>
+                        </div>
+                        <div class="general__item border filter-btn">
+                            <p>Ветчина</p>
+                        </div>
+                        <div class="general__item border filter-btn">
+                            <p>Бекон</p>
+                        </div>
+                    </div>
+                    <div class="general-col">
+                        <div class="general__item border filter-btn">
+                            <p>Говядина</p>
+                        </div>
+                        <div class="general__item border filter-btn">
+                            <p>Чоризо</p>
+                        </div>
+                        <div class="general__item border filter-btn">
+                            <p>Колбаски</p>
+                        </div>
+                        <div class="general__item border filter-btn">
+                            <p>Куриная грудка</p>
                         </div>
                     </div>
                 </div>
@@ -229,7 +358,7 @@
                     <div class="part-right d-flex justify--contentbetween align-items-center">
                         <a class="menu__item will-none">Время работы: с 11:00 до 23:00</a>
                         <a href="#" class="menu__item user will-none" id="userBtn" data-bs-toggle="modal"
-                            data-bs-target="#accountWindow">Войти в аккаунт</a>
+                            data-bs-target="#signIn">Войти в аккаунт</a>
                     </div>
                 </div>
             </div>
@@ -281,7 +410,7 @@
         <nav class="burger-menu" id="burger-menu">
             <ul class="burger-menu__list">
                 <li class="burger-menu__item btn-account boredom" data-bs-toggle="modal"
-                    data-bs-target="#accountWindow">
+                    data-bs-target="#signIn">
                     <div class="container-xl">
                         <a href="#" class="menu__item user">Войти в аккаунт</a>
                     </div>
@@ -515,6 +644,105 @@
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <button type="button select" class="btn select-btn">Выбрать</button>
                             <p class="price">от 240 ₽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="suchi mt-5" id="suchi">
+        <div class="container-xl">
+            <div class="title d-flex justify-content-between">
+                <h1 class="section__title">Суши</h1>
+                <button class="filter border bg-light" data-bs-toggle="offcanvas" data-bs-target="#filterWindow"
+                    aria-controls="filterWindow"><img src="img/filter.svg" alt="filter-btn" date-mark="New">Фильтры</button>
+            </div>
+            <div class="pizzas card-container mt-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/suchi-img.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
                         </div>
                     </div>
                 </div>

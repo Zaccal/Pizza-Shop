@@ -75,3 +75,11 @@ body {
         visibility: unset;
     }
 }
+
+.lock {
+    overflow: hidden !important;
+}
+
+.text-orange {
+    color: $main;
+}

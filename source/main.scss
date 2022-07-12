@@ -92,7 +92,7 @@
 }
 
 .menu__place-list {
-    padding: 10px 20px 26px 20px;
+    padding: 16px 20px 16px 20px;
     & li + li {
         margin-top: 4px;
     }
@@ -134,22 +134,22 @@
     opacity: 1;
 }
 
-.accountWindow__content {
+.signIn__content {
     max-width: 850px;
     background-color: #F9F9F9;
     border-radius: 24px;
     position: relative;
 }
 
-.accountWindow__body {
+.signIn__body {
     padding: 20px 20px 30px 20px;
 }
 
-.accountWindow__link {
+.signIn__link {
     color: $main;
 }
 
-.accountWindow__btn {
+.signIn__btn {
     width: 100%;
     padding: 10px 0px;
 }
@@ -419,6 +419,152 @@
 
 /* pizza section start */
 
+/* Product modal start */
+
+.product-modal {
+    display: block;
+    background-color: rgba(51, 51, 51, 0.377);
+    transform: translateY(-110%);
+    & .modal-dialog {
+        transition: 0.3s;
+        transform: translateY(-110%);
+        max-width: 878px;
+    }
+
+    &__body {
+        position: relative;
+        &::after {
+            content: attr(data-mark);
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 65px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            background-color: #e23535;
+            color: #fff;
+            @include fontAdd($fontOne)
+        }
+    }
+
+    &__title {
+        position: relative;
+        font-weight: 600;
+        padding-left: 8px + 20;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background: url("../img/fire-icon.svg") no-repeat;
+            background-size: contain;
+        }
+    }
+
+    &__img {
+        max-width: 450px;
+        height: 450px;
+        border-radius: 23px;
+    }
+
+    .preprave__img {
+        &.active {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                margin-top: 8px;
+                margin-right: 8px;
+                background: url('../img/none.svg') no-repeat;
+                background-size: contain;
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+                z-index: 2;
+            }
+        }
+    }
+    
+    .preprave {
+        &-add__item, &__item {
+            max-width: 87px;
+            cursor: pointer;
+        }
+
+        .preprave__item + .preprave__item {
+            margin-left: 20px;
+        }
+
+        &__img {
+            width: 75px;
+            height: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        &__name {
+            max-width: 74px;
+            font-size: 11px;
+            line-height: 15px;
+            &.active {
+                color: gray;
+            }
+        }
+    }
+
+    .preprave-add__item div.active {
+        border: 1px solid $main !important;
+        &::before {
+            background: url('../img/Done.svg') no-repeat;
+        }
+    }
+
+    .preprave-add__item > p {
+        color: #000;
+        span {
+            color: $main;
+        }
+        &.active {
+            color: #000;
+        }
+    }
+
+    .parameters{
+        position: relative;
+        border-radius: 6px;
+        &__option, .size__option  {
+            cursor: pointer;
+            width: 180px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            &.active {
+                background-color: $main;
+                border-radius: 6px;
+                & p {color: #fff;}
+            }
+        }
+        .size__option {
+            width: 109px;
+        }
+    }
+
+    &__footer {
+        width: 100%;
+        border-top: 0;
+    }
+}
+
+/* Product modal end */
+
 .filter {
     padding: 12px 16px;
     border-radius: 6px;
@@ -454,6 +600,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        width: 399px;
     }
     & .general-col + .general-col {
         margin-top: 5px;
@@ -513,6 +660,7 @@
 }
 
 .card {
+    padding: 0;
     width: 19rem;
     border-radius: 6px;
     position: relative;
@@ -540,6 +688,11 @@
     }
 }
 
+.card-img-top{
+    width: 100%;
+    height: 100%;
+}
+
 .select-btn {
     padding: 13px 32px;
 }
@@ -549,6 +702,19 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;
+}
+
+.error-filter {
+    position: fixed;
+    transition: 0.3s;
+    width: 73%;
+    z-index: 1051;
+    transform: translateY(-100%);
+    & img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
 }
 
 /* pizza section end */
