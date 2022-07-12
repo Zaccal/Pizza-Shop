@@ -137,7 +137,18 @@ const getElementProduct = (e) => {
 }
 
 productBtn.forEach(element => {
-    element.addEventListener('click', (event) => {
+    element.addEventListener('click', () => {
+
+        const productMark = element.parentElement.parentElement.parentElement.getAttribute('data-mark')
+        const productModalBody = document.querySelector('.product-modal__body')
+
+        if (productMark != null) {
+            productModalBody.classList.remove('none-after')
+            productModalBody.setAttribute('data-mark', productMark)   
+        } else {
+            productModalBody.classList.add('none-after')
+        }
+
         const porductImg = element.parentElement.parentElement.parentElement.querySelector('.card-img-top').getAttribute('src')
         productWindow.querySelector('#product-img').setAttribute('src', porductImg)
 
@@ -148,16 +159,14 @@ productBtn.forEach(element => {
 
         productWindow.style.transform = 'translateY(0)'
         productWindow.querySelector('.modal-dialog').style.transform = 'translateY(0)'
+
+        const productPrice = element.parentElement.querySelector('.price')
+        const itogprice = Number(productPrice.innerHTML.replace('от', '').replace('₽', ''))
+
+        const itogPriceHtml = document.querySelector('.product-modal__itog span')
+
+        itogPriceHtml.innerHTML = itogprice
     })
-})
-
-const closeProductWindow = document.querySelector('#closeProduct')
-
-closeProductWindow.addEventListener('click', () => {
-    setTimeout(() => {
-        productWindow.style.transform = 'translateY(-100%)' 
-    }, 300)
-    productWindow.querySelector('.modal-dialog').style.transform = 'translateY(-110%)'    
 })
 
 // select preprave Fn
@@ -171,13 +180,21 @@ prepraveItems.forEach((value) => {
 
         const valueImg = value.querySelector('.preprave__img').querySelector('img').getAttribute('src')
 
-
+        const itogPriceHtml = document.querySelector('.product-modal__itog span')
+        const weight = document.querySelector('.weight span')
+        
         if (valueImg != `${valueImg.replace('-desible.svg', '')}-desible.svg`) {
             const valueImgNewValue = valueImg + '-desible.svg'
             value.querySelector('.preprave__img').querySelector('img').setAttribute('src', valueImgNewValue)
+            
+            itogPriceHtml.innerHTML = Number(itogPriceHtml.innerHTML) - 30
+            weight.innerHTML = Number(weight.innerHTML) - 15
         } else {
             const valueImgNewValue = valueImg.replace('-desible.svg', '')
             value.querySelector('.preprave__img').querySelector('img').setAttribute('src', valueImgNewValue)
+            
+            itogPriceHtml.innerHTML = Number(itogPriceHtml.innerHTML) + 30
+            weight.innerHTML = Number(weight.innerHTML) + 15
         }
 
     })
@@ -189,12 +206,25 @@ prepraveAddItems.forEach((value) => {
     value.addEventListener('click', () => {
         const gotElement = value.querySelector('div')
         gotElement.classList.toggle('active')
+
+        const itogPriceHtml = document.querySelector('.product-modal__itog span')
+        const weight = document.querySelector('.weight span')
+
+        if (value.querySelector('.preprave-add__img').classList.value != 'preprave-add__img preprave__img border active') {
+            weight.innerHTML = Number(weight.innerHTML) - 10
+            itogPriceHtml.innerHTML = Number(itogPriceHtml.innerHTML) - 59
+        } else {
+            itogPriceHtml.innerHTML = Number(itogPriceHtml.innerHTML) + 59
+            weight.innerHTML = Number(weight.innerHTML) + 10
+        }
     })
+
 })
 
 // parameters Fn
 
 const parameters =  document.querySelectorAll('.parameters__option')
+const weight = document.querySelector('.weight span')
 
 parameters.forEach(elementOne => {
     elementOne.addEventListener('click', (event) => {
@@ -203,6 +233,14 @@ parameters.forEach(elementOne => {
         })
         
         elementOne.classList.add('active')
+
+        const nameElement = elementOne.querySelector('p')
+
+        if (nameElement.innerHTML === 'Тонкое') {
+            weight.innerHTML = Number(weight.innerHTML) - 30
+        } else if (nameElement.innerHTML === 'Традиционное') {
+            weight.innerHTML = Number(weight.innerHTML) + 30
+        }
     })
 })
 
@@ -215,5 +253,27 @@ sizeOptions.forEach((elementOne) => {
         })
 
         elementOne.classList.add('active')
+    })
+})
+
+const closeProductWindow = document.querySelector('#closeProduct')
+
+closeProductWindow.addEventListener('click', () => {
+    setTimeout(() => {
+        productWindow.style.transform = 'translateY(-100%)' 
+    }, 300)
+    productWindow.querySelector('.modal-dialog').style.transform = 'translateY(130%)'    
+
+    prepraveAddItems.forEach((value) => {
+        value.querySelector('.preprave-add__img').classList.remove('active')
+    })
+
+
+    prepraveItems.forEach((value) => {
+        value.querySelector('.preprave__img').classList.remove('active')
+
+        const valueImg = value.querySelector('.preprave__img').querySelector('img').getAttribute('src')
+        const valueImgNewValue = valueImg.replace('-desible.svg', '')
+            value.querySelector('.preprave__img').querySelector('img').setAttribute('src', valueImgNewValue)
     })
 })

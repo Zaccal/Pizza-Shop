@@ -76,6 +76,54 @@
     /* Header footer end */
 }
 
+@media screen and (max-width: 900px) {
+    /* Modal product start */
+
+    .product-modal .modal-dialog{
+        max-width: 100%;
+        margin: 0;
+        margin-top: 61px;
+        transform: translateY(110%);
+    }
+
+    .product-modal .modal-content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .product-modal__content{
+        width: 100%;
+    }
+
+    .product-modal__body {
+        margin-top: 13px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-modal__price {
+        flex-direction: column;
+        align-items: left !important;
+    }
+
+    .product-modal__img {
+        max-width: 360px;
+        height: 360px;
+        margin-bottom: 13px;
+    }
+
+    div.product-modal__footer:nth-child(6) {
+        display: none !important;
+    }
+
+    .modal-content > .product-modal__footer {
+        border: 1px solid #E5E5E5;
+        display: flex !important;
+    }
+
+    /* Modal product end */
+}
+
 @media screen and (max-width: 720px) {
     /* stocks start */
 
@@ -198,6 +246,17 @@
     }
 
     /*pizza section end*/
+}
+
+@media screen and (max-width: 400px) {
+    .preprave, .preprave-add {
+        overflow-x: scroll;
+    }
+    .preprave-add__item {
+        & + & {
+            margin-left: 20px;
+        }
+    }
 }
 
 @media screen and (max-width: 380px) {

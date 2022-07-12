@@ -83,3 +83,11 @@ body {
 .text-orange {
     color: $main;
 }
+
+.none-after {
+    &:after {
+        content: '' !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
