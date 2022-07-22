@@ -20,6 +20,7 @@
 </head>
 
 <body style="overflow: auto;">
+
     <!-- Modales start -->
 
     <!-- Sing in accaunt start -->
@@ -57,7 +58,41 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>    
+    </div>
+
+    <div class="signIn signIn-modal" id="sigin">
+        <div class="signIn__container d-flex modal-dialog">
+            <div class="signIn__content modal-content">
+                <div class="modal-header">
+                    <p class="error2 d-none">Простите пароль должен быть больше 8 символов</p>
+                    <p class="error3 d-none">Простите пароли не совпадают</p>
+                    <button type="button" class="btn-close" id="signIn-closeBtn"></button>
+                </div>
+                <div class="signIn__body modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label text-muted">Имя пользователя</label>
+                            <input type="text" class="form-control" id="exampleInputLogin1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label text-muted">Электронная почта</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label text-muted">Пароль</label>
+                            <input type="password" class="form-control" id="exampleInputPassword2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label text-muted">Повтор пароля</label>
+                            <input type="password" class="form-control" id="exampleInputPassword3">
+                        </div>
+                        <button type="button" class="signIn__btn btn" id="sign-Btn">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>    
     </div>
 
     <!-- Sing in accaunt end -->
@@ -168,6 +203,20 @@
             </div>
         </div>
     </div>
+
+    <!-- well done modal start -->
+
+    <div class="alert alert-success" role="alert" id="wellDone">
+        <div class="alert-success__header d-flex justify-content-between mb-2">
+            <h4 class="alert-heading">Молодец!</h4>
+            <button class="btn-close" id="wellDone-closeBtn"></button>
+        </div>
+        <p>Ты зарегистрировался, осталось только войти в аккаунт нажми на <b>"Войти в аккаунт"</b>.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+
+    <!-- well done modal end -->
 
     <!-- Modales end -->
 
@@ -338,8 +387,27 @@
         </div>
     </div>
 
-    <!-- <div class="offcanvas-bg modal-backdrop fade show">
-    </div> -->
+    <!-- Basket offcanvas -->
+
+    <div class="order offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Ваш заказ</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="order-container">
+
+                <div class="order__products">
+
+                </div>
+
+                <div class="order__itog-price use d-flex justify-content-between align-items-center position-absolute mt-4">
+                    <h5 class="text-main">Итого: <span id="order__itog-price" class="text-main fs-5">0</span> ₽</h5>
+                    <button type="button" class="btn use__btn">Оформить заказ</button>
+                </div>
+            </div>  
+        </div>
+    </div>
 
     <!-- Menus end -->
 
@@ -362,7 +430,7 @@
                         <a href="#" class="menu__item will-none">Проверить адрес</a>
                         <a href="#" class="menu__item">Среднее время доставки<span>*:00:24:19</span></a>
                     </div>
-                    <div class="part-right d-flex justify--contentbetween align-items-center">
+                    <div class="part-right d-flex justify-content-between align-items-center">
                         <a class="menu__item will-none">Время работы: с 11:00 до 23:00</a>
                         <a href="#" class="menu__item user will-none" id="userBtn" data-bs-toggle="modal"
                             data-bs-target="#signIn">Войти в аккаунт</a>
@@ -404,10 +472,15 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="basket d-flex btn">
+                    <div class="basket d-flex btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <img src="img/basket-icon.svg" alt="basket__icon" class="basket__icon">
                         <p class="basket__price text-white">0 ₽</p>
                     </div>
+
+                    <div class="added mt-4 pt-2 pb-2 pr-3 pl-3 d-none">
+                        <p>Товар добавлен в корзину</p>
+                    </div>
+
                     <div class="burger" id="burger">
                         <span></span>
                     </div>
@@ -418,9 +491,11 @@
             <ul class="burger-menu__list">
                 <li class="burger-menu__item btn-account boredom" data-bs-toggle="modal"
                     data-bs-target="#signIn">
-                    <div class="container-xl">
-                        <a href="#" class="menu__item user">Войти в аккаунт</a>
+                    <div class="container-xl d-flex justify-content-between" id="mobileAccountBtns">
+                        <a href="#" class="menu__item user" id="signInMobile">Войти в аккаунт</a>
                     </div>
+                </li>
+                <li id="accountMenuMobile" class="">
                 </li>
                 <li class="burger-menu__item border-bottom border-top">
                     <div class="container-xl">
@@ -657,6 +732,7 @@
             </div>
         </div>
     </section>
+
     <section class="suchi mt-5" id="suchi">
         <div class="container-xl">
             <div class="title d-flex justify-content-between">
@@ -756,6 +832,593 @@
             </div>
         </div>
     </section>
+
+    <section class="bar mt-5">
+        <div class="container-xl">
+            <div class="title d-flex justify-content-between">
+                <h1 class="section__title">Закуски</h1>
+                <button class="filter border bg-light" data-bs-toggle="offcanvas" data-bs-target="#filterWindow"
+                    aria-controls="filterWindow"><img src="img/filter.svg" alt="filter-btn" date-mark="New">Фильтры</button>
+            </div>
+            <div class="pizzas card-container mt-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/bar.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dessert mt-5">
+        <div class="container-xl">
+            <div class="title d-flex justify-content-between">
+                <h1 class="section__title">Десерты</h1>
+                <button class="filter border bg-light" data-bs-toggle="offcanvas" data-bs-target="#filterWindow"
+                    aria-controls="filterWindow"><img src="img/filter.svg" alt="filter-btn" date-mark="New">Фильтры</button>
+            </div>
+            <div class="pizzas card-container mt-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/ice-cream.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="drink mt-5">
+        <div class="container-xl">
+            <div class="title d-flex justify-content-between">
+                <h1 class="section__title">Напитки</h1>
+                <button class="filter border bg-light" data-bs-toggle="offcanvas" data-bs-target="#filterWindow"
+                    aria-controls="filterWindow"><img src="img/filter.svg" alt="filter-btn" date-mark="New">Фильтры</button>
+            </div>
+            <div class="pizzas card-container mt-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/drink.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sause mt-5">
+        <div class="container-xl">
+            <div class="title d-flex justify-content-between">
+                <h1 class="section__title">Соус</h1>
+                <button class="filter border bg-light" data-bs-toggle="offcanvas" data-bs-target="#filterWindow"
+                    aria-controls="filterWindow"><img src="img/filter.svg" alt="filter-btn" date-mark="New">Фильтры</button>
+            </div>
+            <div class="pizzas card-container mt-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/sauce.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="combo mt-5">
+        <div class="container-xl">
+            <div class="title d-flex justify-content-between">
+                <h1 class="section__title">Комбо</h1>
+                <button class="filter border bg-light" data-bs-toggle="offcanvas" data-bs-target="#filterWindow"
+                    aria-controls="filterWindow"><img src="img/filter.svg" alt="filter-btn" date-mark="New">Фильтры</button>
+            </div>
+            <div class="pizzas card-container mt-1 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="New">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Тигр мама</h5>
+                        <p class="card-text">Тигровая креветка, огурец, авокадо, соус Айоли, рис, ик...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">525 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mark mt-4" data-mark="Хит">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Супер Филадельфия</h5>
+                        <p class="card-text">Действительно много семги, сливочный сыр, огурец, рис, н...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">425 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия кранч</h5>
+                        <p class="card-text">Семга, рис, сыр креметто, соус унаги, креветка, авокадо, чип...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">475 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <img src="img/Kombo.jpg" class="card-img-top" alt="Pizza-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Филадельфия крем-брюле</h5>
+                        <p class="card-text">Сливочный сыр, семга татаки с тростниковым сахаром, соус у...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button select" class="btn select-btn">Выбрать</button>
+                            <p class="price">395 ₽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container-xl">
+            <div class="about__wrapper">
+                <h2 class="about__title">Доставка пиццы в Москве</h2>
+
+                <div class="about__info hidden">
+                    <p>
+                        Доставка пиццы в Москве
+                        Захотелось чего-то вкусного и сытного? Желание простое и понятное, только в холодильнике все не то, и до магазина идти лень. Все пропало? Нет. Недорого заказать пиццу в Москве очень просто! Вам на помощь спешит супергерой – Domino’s Pizza! Как у всякого супергероя, у Domino’s Pizza есть свои суперсилы: восхитительный вкус продукции из отборных ингредиентов; широкий ассортимент, включающий легендарные, фирменные и классические виды, для вегетарианцев и любителей экспериментировать; быстрая и бесплатная доставка пиццы в течение 30 минут, чтобы вкусное и ароматное блюдо не успевало остыть.
+                    </p>
+                    <p>
+                        <b>Как сделать заказ</b> <br> 
+                        Доставка пиццы от Domino’s – это когда Вам не нужно никуда ехать или звонить, ведь есть Интернет. Никогда еще заказ пиццы на дом в Москве не был таким простым! Чтобы заказать пиццу онлайн, Вам необходимо: выбрать понравившийся вариант и количество порций; положить желаемое в «Корзину»; не уходить далеко, так как вкусная пицца на заказ с доставкой уже мчится к Вам из ближайшей пиццерии Domino’s. И не забудьте оплатить заказ курьеру!
+                    </p>
+                </div>
+
+                <a href="#" class="view-more text-main">Показать полностью</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer pt-4 pb-4 border-top mt-5">
+        <div class="container-xl">
+            <div class="footer__wrapper d-flex justify-content-between alitgn-items-center">
+                <a href="#" class="logo">
+                    <img src="./img/pizza-logo.svg" alt="Logo">
+                    Куда пицца
+                </a>
+                
+                <div class="footer__group d-flex flex-column">
+                    <h5 class="footer__title">Куда пицца</h5>
+
+                    <a href="#" class="mt-4">О компании</a>
+                    <a href="#" class="mt-4">Пользовательское соглашение</a>
+                    <a href="#" class="mt-4">Условия гарантии</a>
+                </div>
+                
+                <div class="footer__group d-flex flex-column">
+                    <h5 class="footer__title">Куда пицца</h5>
+
+                    <a href="#" class="mt-4">Ресторан</a>
+                    <a href="#" class="mt-4">Контакты</a>
+                    <a href="#" class="mt-4">Поддержка</a>
+                    <a href="#" class="mt-4">Отследить заказ</a>
+                </div>
+
+                <div class="footer__group d-flex flex-column">
+                    <h5 class="footer__title">Контакты</h5>
+
+                    <a href="#tel:#" class="burger-menu__info mt-4">
+                        <img src="img/phone-icon.svg" alt="phone-icon">
+                        +7 (926) 223-10-11
+                    </a>
+
+                    <a href="https://goo.gl/maps/cuBaUQfUVGDMMza3A" class="burger-menu__info mt-4">
+                        <img src="img/map-icon.svg" alt="phone-icon">
+                        Москва, ул. Юных Ленинцев, д.99
+                    </a>
+
+                    <div style="max-width: 228px;" class="footer__network d-flex justify-content-between align-items-center mt-4">
+                        <a href="#" class="burger-menu__info">
+                            <img src="img/facebook.svg" alt="phone-icon">
+                            Facebok
+                        </a>
+                        <a href="#" class="burger-menu__info instagram">
+                            <img src="img/instagram.svg" alt="phone-icon">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <p class="mt-4">© Copyright 2021 — Куда Пицца</p>
+
+        </div>
+    </footer>
+
+    <!-- loading window start -->
+
+    <div class="loading-wrapper" id="loading">
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- loading window end -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

@@ -1,6 +1,106 @@
 @import 'null.scss';
 @import 'verbs.scss';
 
+/* loading start */
+
+.loading-wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: $main;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.text-success {
+    color: #fff !important;
+}
+
+/* loading end */
+
+/* modal well done start */
+
+.alert-success {
+    transition: 0.5s ease-in-out;
+    transform: translateY(-120%);
+    max-width: 500px;
+    z-index: 5;
+    position: fixed;
+    top: 20px;
+    left: 35%;
+}
+
+/* modal well done end */
+
+/* SignIn modal start */
+
+.signIn-modal {
+    background: #00000063;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 1060;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+
+    & .modal-dialog {
+        transition: 0.3s;
+        transform: translateY(-120%);
+    }
+}
+
+/* SignIn modal end */
+
+/* Basket modal start */
+
+.order {
+    max-width: 420px;
+    &__products + &__products {
+        margin-top: 20px;   
+    }
+
+    &__products {
+        overflow-x: scroll;
+        max-height: 87%;
+    }
+
+    &__product-img {
+        max-width: 124px;
+    }
+
+    &__product-name {
+        font-size: 16px;
+    }
+
+    &__number {
+        background: #ffeee2;
+        color: $main;
+        padding: 8px;
+        font-size: 16px;
+        span {
+            cursor: pointer;
+        }
+        & span + span {
+            margin-left: 10px;
+        }
+    }
+
+    &__price {
+        font-size: 16px;
+    }
+}
+
+/* Basket modal end */
+
 /* Header start */
 
 /* Header-top start */
@@ -66,7 +166,7 @@
     }
 }
 
-.menu__place-menu{
+.menu__place-menu, .account-dropdown-menu{
     position: absolute;
     z-index: 2;
     background-color: #fff;
@@ -91,6 +191,27 @@
     }
 }
 
+.account-dropdown-menu {
+    bottom: -880%;
+    right: -30px;
+}
+
+.dropdown-item {
+    position: relative;
+    z-index: 2;
+    &:hover {
+        background-color: $main;
+        color: #fff !important;
+    }
+    &:first-child a {
+        color: $main;
+    }
+}
+
+li.border-bottom:nth-child(1) > a:nth-child(1) {
+    color: $main;
+}
+
 .menu__place-list {
     padding: 16px 20px 16px 20px;
     & li + li {
@@ -112,6 +233,10 @@
 }
 
 /* header left part */ 
+
+.part-right {
+    position: relative;
+}
 
 .user {
     padding-left: 8px + 20px;
@@ -265,10 +390,11 @@
     background-color: #fff;
     transition: 0.3s;
     border-right: 1px solid gray;
-    position: absolute;
+    position: fixed;
     width: 100%;
     left: -100%;
     height: 100%;
+    overflow-y: scroll;
     &__item {
         padding: 20px 0;
     }
@@ -291,6 +417,53 @@
 }
 
 /* Burger end */
+
+/* Header footer start */
+
+.header__footer.active {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.basket {
+    position: relative; 
+}
+
+.header__body {
+    position: relative;
+}
+
+.added {
+    text-align: center;
+    position: absolute;
+    bottom: -180%; 
+    right: -6%;
+    z-index: 1;
+    transition: 0.3s;
+    opacity: 0;
+
+    background-color: #fff;
+    border-radius: 58px;
+    box-shadow: 0px 2px 4px rgba(25, 25, 25, 0.1);
+    width: 245px;
+}
+
+.order-container {
+    position: relative;
+}
+
+.order-container{
+    height: 100%;
+}
+
+.order__itog-price{
+    bottom: 0;
+}
+
+/* Header footer end */
 
 /* Header end */
 
@@ -723,6 +896,46 @@
 }
 
 /* pizza section end */
+
+/* View more start */
+
+.about {
+    margin-top: 60px;
+
+    &__wrapper {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 16px;
+    }
+
+    &__info {
+        & p + p {
+            margin-top: 30px;
+        }
+
+        &.hidden {
+            background: linear-gradient(180deg, rgba(249, 249, 249, 0) 0%, #F9F9F9 100%), #191919;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        margin-bottom: 16px;
+    }
+}
+
+.view-more {
+    font-weight: bold;
+}
+
+/* View more end */
 
 
 @import 'adaptive.scss';
