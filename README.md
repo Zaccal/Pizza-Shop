@@ -11,9 +11,9 @@ Data about account (For sign in account in the page)
 
 ## About
 You can also create a new account. All data account will be save in the object format in Javascript, 
-When you restart the page account will be removed from the object, Also you can leave with the account 
+When you restart the page account will be removed from the object, Also you can leave with the account.
 
-Basket and other functions in the page work.
+Basket and other functions in the page works.
 
 ### Used Framework:
 - Bootstrap
