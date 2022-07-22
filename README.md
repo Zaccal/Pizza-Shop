@@ -2,9 +2,11 @@
 
 https://zaccal.github.io/Pizza-Shop/
 
-Data about account 
+Data about account (For sign in account in the page)
+
 
 **Email**: **userEmail@mail.com**
+
 **Password**: **12345678**
 
 ## About
@@ -22,4 +24,4 @@ Basket and other functions in the page work.
 - Want to use Tailwind instead the bootstrap
 - Add other functions and page 
 
-[url=https://postimg.cc/47Y0Hmg6][img]https://i.postimg.cc/47Y0Hmg6/Screenshot-2022-07-22-at-14-04-34.png[/img][/url]
+[![Screenshot-2022-07-22-at-14-04-34.png](https://i.postimg.cc/3R1Q6vfc/Screenshot-2022-07-22-at-14-04-34.png)](https://postimg.cc/47Y0Hmg6)
